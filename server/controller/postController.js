@@ -20,9 +20,9 @@ const containsBannedWords = (message) => {
 
 // Function to create a new post
 export const createPost = async (req, res) => {
+  console.log(req.body)
   try {
     const { message, mood } = req.body;
-
     // Check if the message contains banned words
     if (containsBannedWords(message)) {
       return res.status(400).json({
@@ -35,6 +35,7 @@ export const createPost = async (req, res) => {
     await newPost.save();
     res.status(201).json(newPost);
   } catch (error) {
+    console.error(error)// log the error
     res.status(500).json({ message: error.message });
   }
 };

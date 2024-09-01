@@ -12,7 +12,7 @@ import {
 
 const router = express.Router();
 
-router.get("/", getAllPosts);
+router.get("/all", getAllPosts);
 router.post("/", createPost);
 router.get("/:id", getPostById);
 router.put("/:id", updatePost);
