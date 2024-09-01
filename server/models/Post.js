@@ -27,4 +27,6 @@ const postSchema = new Schema({
     default: Date.now, //  Set the createdAt field to the current date and time
   },
 });
-export default model("Post", postSchema);
+
+const Post = model('Post', postSchema)
+export default Post;
