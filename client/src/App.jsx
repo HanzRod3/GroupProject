@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import { PostForm } from "./components/PostForm";
 import BottomNav from "./components/BottomNav";
 import AllPosts from "./components/AllPosts";
+import PostDetails from "./components/PostDetails";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/view" element={<AllPosts />} />
           <Route path="/create" element={<PostForm />} />
+          <Route path="/posts/:id" element={<PostDetails />} />
         </Routes>
       </div>
       <BottomNav />

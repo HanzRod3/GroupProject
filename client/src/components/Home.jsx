@@ -1,13 +1,12 @@
-import ZenQuotes from "./ZenQuotes";
+import JokeQuotes from "./JokeQuotes";
+import HomeImage from "./HomeImage";
 const Home = () => {
-
-    return (
+  return (
     <>
-    <ZenQuotes></ZenQuotes>
+      <JokeQuotes />
+      <HomeImage />
     </>
-
-
-    )
-}
+  );
+};
 
 export default Home;
