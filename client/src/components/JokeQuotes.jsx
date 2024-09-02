@@ -20,10 +20,9 @@ const JokeQuotes = (props) => {
       <div className="card bg-primary text-lg" style={{ width: 2000 }}>
         <h5 className="card-title text-light">Jokes </h5>
         <ul className="text-light">
-          {" "}
           {jokes.map((joke, index) => (
             <li key={index}>{joke}</li>
-          ))}{" "}
+          ))}
         </ul>
       </div>
     </div>
