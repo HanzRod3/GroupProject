@@ -1,4 +1,21 @@
+<<<<<<< HEAD
 .img{
     height: 200px;
     margin:25px;
 }
+=======
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+>>>>>>> 229d48a5a3afd846503ff54ff8b32894f7e20a59

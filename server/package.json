@@ -2,7 +2,10 @@
   "name": "server",
   "version": "1.0.0",
   "main": "server.js",
+<<<<<<< HEAD
   "type": "module",
+=======
+>>>>>>> 229d48a5a3afd846503ff54ff8b32894f7e20a59
   "scripts": {
     "start": "node server.js",
     "dev": "npx nodemon"
@@ -20,5 +23,10 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.4"
+<<<<<<< HEAD
   }
+=======
+  },
+  "type": "module"
+>>>>>>> 229d48a5a3afd846503ff54ff8b32894f7e20a59
 }

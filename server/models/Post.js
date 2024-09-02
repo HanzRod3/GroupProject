@@ -21,10 +21,14 @@ const postSchema = new Schema({
     like: { type: Number, default: 0 }, //  Initialize like reactions to 0
     love: { type: Number, default: 0 }, //  Initialize love reactions to 0
     hug: { type: Number, default: 0 }, //  Initialize hug reactions to 0
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now, //  Set the createdAt field to the current date and time
-  },
-});
-export default model("Post", postSchema);
+  }
+  // createdAt: {
+  //   type: Date,
+  //   default: Date.now, //  Set the createdAt field to the current date and time
+  // },
+},
+{timestamps : true}
+);
+
+const Post = model('Post', postSchema)
+export default Post;
