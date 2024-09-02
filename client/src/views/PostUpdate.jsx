@@ -1,48 +1,43 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { createPostService } from "../services/PostServices";
+import { useState, useEffect } from "react";
+import {useParams, useNavigate} from 'react-router-dom';
+import { getPostByIdService, updatePostService } from "../services/PostServices";
 
-export const PostForm = () => {
-  const [errors, setErrors] = useState({});
-  const [FormData, setFormData] = useState({
-    message: "",
-    mood: "",
-  });
+const PostUpdate = () => {
 
-  const navigate = useNavigate();
+    const [FormData, setFormData] = useState({})
+    const [errors, setErrors] = useState({})
+    const {id} = useParams()
+    const navigate = useNavigate();
 
-  const updatePostData = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+    useEffect(() => {
+        getPostByIdService(id)
+            .then(res => setFormData(res))
+            .catch(error => console.log(error))
+    },[])
 
-  const createPost = (e) => {
-    e.preventDefault();
-    const post = { message: FormData.message, mood: FormData.mood };
+    const updatePostData = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
 
-    createPostService(post)
-      .then((res) => {
-        console.log(res);
-        navigate("/view");
-      })
-      .catch((err) => {
-        console.log(err.response.data.errors);
-        setErrors(err.response.data.errors);
-      });
-  };
+    const updatePost = e => {
+        e.preventDefault()
+        updatePostService(FormData)
+            .then(() => (navigate('/view')))
+            .catch(error => setErrors(error.response.data.errors))
 
-  return (
-    <>
-      
-      <main className=" bg-dark ">
+    }
+
+    return (<>
+        <main className=" bg-dark ">
         <div
-          className="card  text-center bg-dark mx-auto"
-          style={{ width: 660 }}
+            className="card  text-center bg-dark mx-auto"
+            style={{ width: 660 }}
         >
-          <div className="card-body">
-            <h5 className="card-title text-light">Post Form </h5>
-            <form onSubmit={createPost}>
-              <div className="form-floating mb-3">
+        <div className="card-body">
+            <h5 className="card-title text-light">Post Update </h5>
+            <form onSubmit={updatePost}>
+                <div className="form-floating mb-3">
                 <input
                   type="text"
                   name="message"
@@ -76,7 +71,7 @@ export const PostForm = () => {
                 {errors?.mood && <p>{errors.mood.message}</p>}
               </div>
               <button type="submit" className="mt-4 btn btn-success">
-                Add Post
+                Update Post
               </button>
             </form>
           </div>
@@ -143,6 +138,7 @@ export const PostForm = () => {
           </button>
         </div>
       </main>
-    </>
-  );
-};
+    </>)
+}
+
+export default PostUpdate

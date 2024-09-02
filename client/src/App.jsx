@@ -6,6 +6,7 @@ import { PostForm } from "./views/PostForm";
 import BottomNav from "./components/BottomNav";
 import AllPosts from "./views/AllPosts";
 import PostDetails from "./views/PostDetails";
+import PostUpdate from "./views/PostUpdate";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/view" element={<AllPosts />} />
           <Route path="/create" element={<PostForm />} />
           <Route path="/posts/:id" element={<PostDetails />} />
+          <Route path="/posts/update/:id" element={<PostUpdate />} />
         </Routes>
       </div>
       <BottomNav />

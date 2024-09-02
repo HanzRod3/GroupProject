@@ -3,6 +3,7 @@ import HomeImage from "../components/HomeImage";
 const Home = () => {
   return (
     <>
+      
       <JokeQuotes />
       <HomeImage />
     </>

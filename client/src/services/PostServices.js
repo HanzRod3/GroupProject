@@ -25,9 +25,9 @@ export const getPostByIdService = async id => {
     } catch (error){throw error}
 }
 
-export const updatePostService = async (id, data) => {
+export const updatePostService = async (data) => {
     try{
-        const res = await http.put(`/${id}`,data)
+        const res = await http.put(`/${data._id}`,data)
         return res.data
     } catch (error){throw error}
 }

@@ -11,7 +11,7 @@ const Header = () => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav  ms-auto">
-                        <li className="nav-item ms-auto ">
+                            <li className="nav-item ms-auto ">
                                 <Link className="nav-link" to="/"> Home </Link>
                             </li>
                             <li className="nav-item ms-auto ">

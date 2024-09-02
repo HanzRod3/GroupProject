@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose";
 const postSchema = new Schema({
   message: {
     type: String,
-    required: true,
+    required: [true, "Don't forget to express yourself"]
   },
   mood: {
     type: String,
