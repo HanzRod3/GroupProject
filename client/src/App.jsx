@@ -11,7 +11,7 @@ function App() {
   return (
     <>
     <Routes>
-      <Route path={'/post/form'} element={<PostForm/>}/>
+      <Route path={'/'} element={<PostForm/>}/>
       <Route path={'/dashboard'} element={<AllPosts/>}/>
       <Route path={'/post/info'} element={<PostInfo/>}/>
     </Routes>
