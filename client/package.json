@@ -10,13 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@tabler/icons-react": "^3.14.0",
     "axios": "^1.7.6",
     "date-fns": "^3.6.0",
-=======
-    "axios": "^1.7.5",
->>>>>>> 229d48a5a3afd846503ff54ff8b32894f7e20a59
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.1"

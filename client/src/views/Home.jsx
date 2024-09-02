@@ -1,5 +1,5 @@
-import JokeQuotes from "./JokeQuotes";
-import HomeImage from "./HomeImage";
+import JokeQuotes from "../components/JokeQuotes";
+import HomeImage from "../components/HomeImage";
 const Home = () => {
   return (
     <>
