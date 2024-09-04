@@ -4,10 +4,7 @@ import { createPostService } from "../services/PostServices";
 
 export const PostForm = () => {
   const [errors, setErrors] = useState({});
-  const [FormData, setFormData] = useState({
-    message: "",
-    mood: "",
-  });
+  const [FormData, setFormData] = useState({});
 
   const navigate = useNavigate();
 
@@ -17,18 +14,12 @@ export const PostForm = () => {
   };
 
   const createPost = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const post = { message: FormData.message, mood: FormData.mood };
-
     createPostService(post)
-      .then((res) => {
-        console.log(res);
-        navigate("/view");
-      })
-      .catch((err) => {
-        console.log(err.response.data.errors);
-        setErrors(err.response.data.errors);
-      });
+        .then(() => navigate("/view"))
+        .catch(err => setErrors(err.response.data.errors))
+      
   };
 
   return (

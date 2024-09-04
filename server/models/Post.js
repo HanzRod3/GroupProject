@@ -2,7 +2,9 @@ import { Schema, model } from "mongoose";
 const postSchema = new Schema({
   message: {
     type: String,
-    required: [true, "Don't forget to express yourself"]
+    required: [true, "Don't forget to express yourself"],
+    minLength: [1, "Message needs to be at least 1 character"],
+    maxLength: [50, "Message cannot exceed 80 characters"]
   },
   mood: {
     type: String,

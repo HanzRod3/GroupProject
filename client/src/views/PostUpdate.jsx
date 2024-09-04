@@ -23,7 +23,7 @@ const PostUpdate = () => {
     const updatePost = e => {
         e.preventDefault()
         updatePostService(FormData)
-            .then(() => (navigate('/view')))
+            .then(() => navigate('/view'))
             .catch(error => setErrors(error.response.data.errors))
 
     }

@@ -20,23 +20,26 @@ const containsBannedWords = (message) => {
 
 // Function to create a new post
 export const createPost = async (req, res) => {
-  console.log(req.body)
+
   try {
-    const { message, mood } = req.body;
-    // Check if the message contains banned words
-    if (containsBannedWords(message)) {
+    const POST = await Post.create(req.body)
+    console.log(req.body)
+    // const { message, mood } = req.body;
+    // // Check if the message contains banned words
+    if (containsBannedWords(req.body.message)) {
       return res.status(400).json({
         message:
           "Your post contains inappropriate language and cannot be submitted.",
       });
     }
 
-    const newPost = new Post({ message, mood });
-    await newPost.save();
-    res.status(201).json(newPost);
+    // const newPost = new Post({ message, mood });
+    // await newPost.save();
+    // res.status(201).json(newPost);
+    res.status(200).json(POST)
   } catch (error) {
-    console.error(error)// log the error
-    res.status(500).json({ message: error.message });
+    // log the error
+    res.status(400).json(error );
   }
 };
 
@@ -65,28 +68,35 @@ export const getPostById = async (req, res) => {
 
 // Function to update a post by ID
 export const updatePost = async (req, res) => {
+
+  const {id} = req.params
+    const options = {
+        new: true,
+        runValidators: true
+    }
   try {
-    const { message, mood } = req.body;
+    // const { message, mood } = req.body;
+    const UPDATED_POST = await Post.findByIdAndUpdate(id, req.body, options)
 
     // Check if the message contains banned words before updating
-    if (containsBannedWords(message)) {
-      return res.status(400).json({
-        message:
-          "Your post contains inappropriate language and cannot be updated.",
-      });
-    }
+    // if (containsBannedWords(message)) {
+    //   return res.status(400).json({
+    //     message:
+    //       "Your post contains inappropriate language and cannot be updated.",
+    //   });
+    // }
 
-    const updatedPost = await Post.findByIdAndUpdate(
-      req.params.id,
-      { message, mood },
-      { new: true }
-    );
-    if (!updatedPost) {
-      return res.status(404).json({ message: "Post not found" });
-    }
-    res.status(200).json(updatedPost);
+    // const updatedPost = await Post.findByIdAndUpdate(
+    //   req.params.id,
+    //   { message, mood },
+    //   { new: true }
+    // );
+    // if (!updatedPost) {
+    //   return res.status(404).json({ message: "Post not found" });
+    // }
+    res.status(200).json(UPDATED_POST);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json(error);
   }
 };
 
