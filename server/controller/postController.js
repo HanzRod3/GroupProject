@@ -22,21 +22,16 @@ const containsBannedWords = (message) => {
 export const createPost = async (req, res) => {
 
   try {
-    const POST = await Post.create(req.body)
     console.log(req.body)
-    // const { message, mood } = req.body;
     // // Check if the message contains banned words
     if (containsBannedWords(req.body.message)) {
       return res.status(400).json({
         message:
-          "Your post contains inappropriate language and cannot be submitted.",
+        "Your post contains inappropriate language and cannot be submitted.",
       });
     }
-
-    // const newPost = new Post({ message, mood });
-    // await newPost.save();
-    // res.status(201).json(newPost);
-    res.status(200).json(POST)
+    const POST = await Post.create(req.body)
+    res.status(201).json(POST)
   } catch (error) {
     // log the error
     res.status(400).json(error );
@@ -75,26 +70,19 @@ export const updatePost = async (req, res) => {
         runValidators: true
     }
   try {
-    // const { message, mood } = req.body;
-    const UPDATED_POST = await Post.findByIdAndUpdate(id, req.body, options)
-
+    
+    
     // Check if the message contains banned words before updating
-    // if (containsBannedWords(message)) {
-    //   return res.status(400).json({
-    //     message:
-    //       "Your post contains inappropriate language and cannot be updated.",
-    //   });
-    // }
-
-    // const updatedPost = await Post.findByIdAndUpdate(
-    //   req.params.id,
-    //   { message, mood },
-    //   { new: true }
-    // );
-    // if (!updatedPost) {
-    //   return res.status(404).json({ message: "Post not found" });
-    // }
-    res.status(200).json(UPDATED_POST);
+    if (containsBannedWords(req.body.message)) {
+      return res.status(400).json({
+        message:
+        "Your post contains inappropriate language and cannot be updated.",
+      });
+    }
+    
+    
+        const UPDATED_POST = await Post.findByIdAndUpdate(id, req.body, options)
+        res.status(200).json(UPDATED_POST);
   } catch (error) {
     res.status(500).json(error);
   }

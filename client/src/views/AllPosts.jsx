@@ -48,7 +48,6 @@ const AllPosts = () => {
 
   const RemovePost = (id) => {
     deletePostService(id)
-      // setPosts(res => res.filter((post) => post._id != id))
       .then(() => {
         setPosts((posts) => posts.filter((post) => post._id !== id));
       })
